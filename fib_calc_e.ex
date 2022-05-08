@@ -23,9 +23,9 @@ fib_num = IO.gets("Which number in the fibonacci sequence would you like the val
           |> Integer.parse                        # Pipe user input into Integer.parse function to extract an integer
           |> elem(0)                              # Pipe result of Integer.parse into elem function to extract the parsed integer
 
-# Arguments are passed either by-value or by-reference to each function. The method chosen does not make a difference to
-# the programmer due to the fact that all objects in Elixir are immutable so the method used is picked by the compiler
-# on a per-object basis (ex. Maps are passed by-reference)
+# Arguments are always passed by-value in Elixir as when a variable is assigned it is bound to a memory address and
+# cannot be changed afterwards. The value may be passed around throughout the program, but since all data is immutable,
+# that value may NEVER change
 
 Stream.unfold({1,1}, fn {a,b} -> {a,{b,a+b}} end) # Unfolds into an array of the fibonacci sequence beginning with 1, 1
           |> Enum.take(fib_num)                   # Pipe the function into Enum.take which gets the first "fib_num" numbers of the fibonacci sequence
